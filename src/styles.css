@@ -1,0 +1,396 @@
+/* === GLOBAL RESET === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  background-color: #0f0f0f;
+  color: #eaeaea;
+}
+
+/* === GLOW UTILITY === */
+.glow {
+  text-shadow: 0 0 5px #8e2de2, 0 0 10px #4a00e0, 0 0 20px #4a00e0;
+}
+
+/* === COMMON FULLSCREEN CENTERING === */
+.fullscreen-center,
+.app-container,
+.auth-page,
+.chat-fullscreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  text-align: center;
+  background: radial-gradient(circle, #1e1e1e, #0f0f0f);
+  animation: fadeIn 1s ease;
+}
+
+/* === AUTH BOX (SIGNUP/LOGIN) === */
+.auth-box {
+  background: #111;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #7b2ff7;
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #fff;
+}
+
+/* === BUTTONS === */
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  box-shadow: 0 0 8px #8e2de2, 0 0 16px #4a00e0;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #fff, 0 0 25px #8e2de2;
+}
+
+/* === INPUT FIELDS === */
+input {
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #4a00e0;
+  margin: 10px 0;
+  width: 100%;
+  background: #1e1e1e;
+  color: #fff;
+  box-shadow: 0 0 6px #4a00e0;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #8e2de2;
+}
+
+/* === HOME SCREEN === */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: #0a0a0a;
+  color: white;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.home-title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #a855f7;
+  text-shadow: 0 0 10px #a855f7;
+  margin-bottom: 1rem;
+}
+
+.home-subtitle {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.home-buttons button {
+  background-color: #7c3aed;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px #a855f7;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #c084fc;
+}
+
+/* === CHAT HEADER === */
+.chat-header {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  background: #1a1a1a;
+  border-bottom: 1px solid #4a00e0;
+  font-size: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px #4a00e0;
+}
+
+/* === CHAT WINDOW === */
+.chat-window {
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  background: #111;
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #4a00e0;
+  animation: slideUp 0.7s ease;
+}
+
+/* === CHAT BUBBLES === */
+.chat-bubble {
+  max-width: 80%;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 16px;
+  font-size: 15px;
+  animation: fadeInUp 0.4s ease;
+}
+
+.chat-bubble.user {
+  background: #4a00e0;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.chat-bubble.bot {
+  background: #222;
+  color: #eaeaea;
+  align-self: flex-start;
+}
+
+/* === CHAT INPUT === */
+.chat-input-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  gap: 10px;
+  background: #1a1a1a;
+  border-top: 1px solid #4a00e0;
+  box-shadow: 0 -2px 10px #4a00e0;
+  border-radius: 0 0 16px 16px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 0 6px #4a00e0;
+}
+
+.chat-input-area input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #8e2de2;
+}
+
+.chat-input-area button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #7b2ff7;
+  transition: background 0.3s ease;
+}
+
+
+/* === LOADING === */
+.loading {
+  font-style: italic;
+  color: #ccc;
+  text-align: center;
+  animation: pulse 1s infinite;
+}
+
+/* === ROLE SELECTION PAGE === */
+.role-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle, #1e1e1e, #0f0f0f);
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* Role Buttons Container */
+.roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 720px;
+  padding: 0 1rem;
+}
+
+/* Role Button Styles */
+.role-button {
+  padding: 14px 20px;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.role-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #fff, 0 0 25px #8e2de2;
+}
+
+/* Dashboard Controls */
+.dashboard-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+.logo-img {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 8px #8e2de2);
+}
+/* Top-right Logout Button */
+.top-right-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.top-right-controls button {
+  padding: 10px 18px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8e2de2,#8e2de2);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 10px #8e2de2;
+  transition: all 0.3s ease;
+}
+
+.top-right-controls button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #8e2de2;
+}
+.radio-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  color: #fff;
+  background: #2a2a2a;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.radio-label:hover {
+  background: #3a3a3a;
+}
+
+.radio-options input[type="radio"] {
+  transform: scale(1.2);
+}
+
+.radio-options button {
+  margin-top: 16px;
+  padding: 10px 16px;
+  font-size: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.radio-options button:hover {
+  background-color: #0056b3;
+}
+
